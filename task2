@@ -1,0 +1,29 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+class Point{
+public:
+    int x, y;
+    Point(){
+        x = y = 0;
+    }
+    Point (int x, int y){
+        this->x = x;
+        this->y = y;
+    }
+    void Print (){
+        cout << "X:"<< x<< "Y:"<< y<< endl;
+    }
+};
+int main (){
+    string path = "test.txt";
+    Point point (10, 40);
+    ofstream fout;
+    fout.open(path, ofstream::app);
+
+        fout.write((char *) &point, sizeof(Point));
+    fout.close();
+    return 0;
+}
